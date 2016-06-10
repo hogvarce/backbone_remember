@@ -7,7 +7,7 @@ const Person = Backbone.Model.extend({
         name: "Unknown"
     },
     validate: function(attrs, options) {
-        if ( attrs.name == '' ) {
+        if ( ! $.trim(attrs.name)  ) {
           return "Имя должно быть задано!";
         }
       }
