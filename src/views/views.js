@@ -6,11 +6,15 @@ const Backbone = require('backbone');
 
 const Views = Backbone.View.extend({
     tagName: "ul",
+    initialize: function(){
+        this.collection.on('add', this.addOne, this);
+    },
     render: function() {
         this.collection.each(this.addOne, this);
         return this;
     },
     addOne: function(item){
+        if (item.attributes.name == '') return false;
         item.on('invalid',function(model, error){
             alert(error);
         })

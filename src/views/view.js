@@ -14,7 +14,8 @@ const View = Backbone.View.extend({
     template: template('person'),
     initialize: function(){
         _.bindAll(this, 'render', 'changeItem' );
-        this.model.on('change', this.render);
+        this.model.on('change', this.render, this);
+        this.model.on('destroy', this.remove, this);
     },
     render: function() {
         this.$el.html(this.template( this.model.toJSON() ));
@@ -28,9 +29,12 @@ const View = Backbone.View.extend({
         let newitem = prompt("Новый текст", this.model.get('name'));
         this.model.set('name', newitem, {validate:true});
     },
+    remove: function(){
+        this.$el.remove();
+    },
     deleteItem: function(){
         if (confirm("Вы уверены?")) {
-            this.remove();
+            this.model.destroy();
         }
     }
 });

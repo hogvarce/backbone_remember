@@ -5,10 +5,18 @@
   </head>
   <body>
       <main class="container">
+          <h1>Tasks list</h1>
+          <form id="addTask" >
+              <input type="text" name="task" value="">
+              <button type="submit" id="add">Добавить задачу</button>
+          </form>
+          <div class="constainer">
+
+          </div>
       </main>
   </body>
     <script type="text/template" id="person">
-        <span><%= name %></span> <button id="edit">Edit</button><button id="delete">Delete</button>
+        <span><%= name %></span>  <button id="edit">Edit</button> <button id="delete">Delete</button>
     </script>
     <script src="/bundle.js"></script>
 </html>
